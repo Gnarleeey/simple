@@ -133,6 +133,14 @@ public class Draw extends JComponent{
 						e.printStackTrace();
 					}
 				}
+
+				for(int x=0; x<monsters.length; x++){
+					if(monsters[x]!=null){
+						if(monsters[x].contact){
+							monsters[x].life = monsters[x].life - 10;
+						}
+					}
+				}
 			}
 		});
 		sword1.start();
@@ -168,8 +176,9 @@ public class Draw extends JComponent{
 						}
 					}
 				}
-			}
+		}
 		});
+
 		thread1.start();
 	}
 	public void swirlAtkAnimation(){
@@ -197,13 +206,13 @@ public class Draw extends JComponent{
 					}
 				}
 				for(int x=0; x<monsters.length; x++){
-					if(monsters[x]!=null){
-						if(monsters[x].contact){
-							monsters[x].life = monsters[x].life - 10;
+						if(monsters[x]!=null){
+							if(monsters[x].contact){
+								monsters[x].life = monsters[x].life - 10;
+							}
 						}
 					}
 				}
-			}
 		});
 		thread2.start();
 	}
@@ -288,6 +297,14 @@ public class Draw extends JComponent{
 						e.printStackTrace();
 					}
 				}
+
+				for(int x=0; x<monsters.length; x++){
+					if(monsters[x]!=null){
+						if(monsters[x].contact){
+							monsters[x].life = monsters[x].life - 10;
+						}
+					}
+				}
 			}
 		});
 		bow1.start();
@@ -314,6 +331,14 @@ public class Draw extends JComponent{
 				        Thread.sleep(100);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
+					}
+				}
+
+				for(int x=0; x<monsters.length; x++){
+					if(monsters[x]!=null){
+						if(monsters[x].contact){
+							monsters[x].life = monsters[x].life - 10;
+						}
 					}
 				}
 			}
@@ -364,6 +389,7 @@ public class Draw extends JComponent{
 		y=y - 5;
 		reloadImage();
 		repaint();
+		checkCollision();
 	}
 	public void moveDown(){
 		if(y > 470){
@@ -372,6 +398,7 @@ public class Draw extends JComponent{
 		y=y + 5;
 		reloadImage();
 		repaint();
+		checkCollision();
 		
 	}
 	public void moveLeft(){
@@ -381,12 +408,14 @@ public class Draw extends JComponent{
 		x=x - 5;
 		reloadImage();
 		repaint();
+		checkCollision();
 		
 	}
 	public void moveRight(){
 		x=x + 5;
 		reloadImage();
 		repaint();
+		checkCollision();
 		
 	}
 	public void checkCollision(){
